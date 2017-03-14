@@ -13,14 +13,17 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class Food
 {
+    //The length of the food (Square Boarder)
     private final int BORDER_LENGTH = 20;
     private final int X_Y_BORDER_MIN = BORDER_LENGTH;
+    //The max x-axis position of food
     private final int X_BORDER_MAX = GameConstants.WINDOW_WIDTH_RESOLUTION - BORDER_LENGTH;
+    //The max y-axis position of food
     private final int Y_BORDER_MAX = GameConstants.WINDOW_HEIGHT_RESOLUTION - BORDER_LENGTH;
     private float posX, posY;
-    private Graphics graphics;
+    //Rectangle Object
     private Rectangle rectangle;
-//    private Random rnd = new Random();
+    //Randomize
     private ThreadLocalRandom rnd = ThreadLocalRandom.current();
 
     public Food(float posX, float posY)
@@ -30,23 +33,11 @@ public class Food
         rectangle = new Rectangle(posX, posY, BORDER_LENGTH, BORDER_LENGTH);
     }
 
-
-
     public void generateNewPosition()
     {
-        /*do
-        {
-            this.posX = rnd.nextInt(X_BORDER_MAX);
-            this.posY = rnd.nextInt(Y_BORDER_MAX);
-        }while (getPosX() < X_Y_BORDER_MIN || getPosY() < X_Y_BORDER_MIN);*/
         this.posX = rnd.nextInt(X_Y_BORDER_MIN, X_BORDER_MAX);
         this.posY = rnd.nextInt(X_Y_BORDER_MIN, Y_BORDER_MAX);
         rectangle = new Rectangle(posX, posY, BORDER_LENGTH, BORDER_LENGTH);
-    }
-
-    public void setGraphics(Graphics graphics)
-    {
-        this.graphics = graphics;
     }
 
     public Food()
@@ -54,23 +45,11 @@ public class Food
         this.generateNewPosition();
     }
 
-    public void draw()
+    public void draw(Graphics graphics)
     {
-//        this.graphics = graphics;
         graphics.setColor(Color.cyan);
         graphics.fill(rectangle);
-//        graphics.fillRect(this.posX, this.posY, BORDER_LENGTH, BORDER_LENGTH);
-//        graphics.drawRect(this.posX, this.posY, BORDER_LENGTH, BORDER_LENGTH);
-//        System.out.println(this.posX);
-//        System.out.println(this.posY);
     }
-
-    /*public void eaten()
-    {
-        this.generateNewPosition();
-        this.draw();
-    }*/
-
     public Rectangle getRectangle()
     {
         return rectangle;

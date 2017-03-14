@@ -10,5 +10,4 @@ public class GameConstants
     public static String GAME_TITLE = "Snake";
     public static final int WINDOW_WIDTH_RESOLUTION = 640;
     public static final int WINDOW_HEIGHT_RESOLUTION = 480;
-    public static final int GAME_SPEED = 100;
 }

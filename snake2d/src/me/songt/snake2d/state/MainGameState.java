@@ -33,11 +33,10 @@ public class MainGameState extends BasicGameState
     @Override
     public void render(GameContainer gameContainer, StateBasedGame stateBasedGame, Graphics graphics) throws SlickException
     {
-        food.setGraphics(graphics);
-        snake.setGraphics(graphics);
-        food.draw();
-        snake.draw();
+        food.draw(graphics);
+        snake.draw(graphics);
         graphics.drawString("Socre: " + snake.getScore(), 30, 30);
+        graphics.drawString("Speed: " + snake.getMoveSpeed(), GameConstants.WINDOW_WIDTH_RESOLUTION - 100, 30);
         graphics.setColor(Color.red);
         graphics.drawString(snake.isAlive() ? "" : "Dead", 300 ,230);
     }
